@@ -1,0 +1,7 @@
+_target_: src.data.data_interface.get_emoji_eval_data
+root_path: ??? # dataset dir
+feat_path: ??? # dir of image features extracted by clip visual encoder
+batch_size: 32
+max_txt_len: 108
+num_workers: 8
+split: 'val'

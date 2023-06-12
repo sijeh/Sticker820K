@@ -1,0 +1,9 @@
+_target_: src.data.data_interface.EmojiDataModule
+data_dir: ??? # dataset dir
+feat_dir: ??? # dir of image features extracted by clip visual encoder
+batch_size: 4
+ratio_t2i: 0.5
+ratio_i2i: 0.25
+max_txt_len: 128
+num_workers: 4
+pin_memory: False

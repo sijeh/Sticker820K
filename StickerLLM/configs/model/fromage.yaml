@@ -1,0 +1,15 @@
+
+vis_encoder: null
+
+lm_model:
+  _target_: transformers.AutoModel.from_pretrained
+  pretrained_model_name_or_path: ??? # path of language model
+
+fromage:
+  freeze_lm: True
+  freeze_vm: True
+  num_vis_tokens: 1
+  # img_embed_drop_prob: float = 0.0
+  shared_emb_dim: 512
+  vis_hidden_size: 768
+  aux_hidden_size: 768

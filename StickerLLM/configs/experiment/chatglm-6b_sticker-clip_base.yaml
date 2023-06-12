@@ -1,0 +1,45 @@
+# @package _global_
+defaults:
+  - override /trainer: gpu
+  - override /tokenizer: chatglm
+
+data:
+  batch_size: 32
+  num_workers: 8
+  add_special_tokens: False
+  max_txt_len: 128
+
+
+trainer:
+  devices: 8
+  num_nodes: 1
+  strategy: deepspeed_stage_2_offload
+  # fast_dev_run: True
+  # limit_train_batches: 20
+  # limit_val_batches: 2
+  precision: bf16
+
+task_name: "chatglm_clip-base"
+
+model:
+  lm_model:
+    _target_: transformers.AutoModel.from_pretrained
+    pretrained_model_name_or_path: ???
+    trust_remote_code: True
+
+  vis_encoder: null
+
+  fromage:
+    vis_hidden_size: 768
+    extra_param_dir: ???
+
+
+
+optimizer:
+  _target_: deepspeed.ops.adam.DeepSpeedCPUAdam
+  # _target_: deepspeed.ops.adam.FusedAdam
+  _convert_: object
+  lr: 0.0003
+  betas: [0.9,0.95]
+  weight_decay: 0.0
+  eps: 1.0e-8

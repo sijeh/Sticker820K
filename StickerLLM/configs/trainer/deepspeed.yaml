@@ -1,0 +1,9 @@
+defaults:
+  - default.yaml
+
+# strategy: deepspeed_stage_2_offload
+strategy: deepspeed_stage_3_offload
+
+accelerator: gpu
+devices: 2
+num_nodes: 1
